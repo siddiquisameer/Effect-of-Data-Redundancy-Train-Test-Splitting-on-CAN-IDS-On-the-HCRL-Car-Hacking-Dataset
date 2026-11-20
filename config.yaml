@@ -28,12 +28,12 @@ models:
     min_samples_leaf: 1
     class_weight: balanced
   RF:
-    n_estimators: 100      # fixed after M3 timing test, 28 Oct 2026
-    max_samples: 0.5       # fixed after M3 timing test, 28 Oct 2026; same for P1 and P2
+    n_estimators: 50       # aligned with the team pilot, 20 Nov 2026
+    max_samples: null      # full bootstrap sample, aligned with the team pilot, 20 Nov 2026
     max_depth: null
     min_samples_leaf: 1
     bootstrap: true
-    class_weight: balanced
+    class_weight: balanced_subsample   # aligned with the team pilot, 20 Nov 2026
 
 runtime:                   # hardware only, does not change results
   n_jobs: -1

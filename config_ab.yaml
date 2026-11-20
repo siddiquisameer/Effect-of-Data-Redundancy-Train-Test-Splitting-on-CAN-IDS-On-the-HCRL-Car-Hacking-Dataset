@@ -1,0 +1,19 @@
+# Settings of the Technique A / Technique B experiments (src/run_ab.py).
+# Models and seeds come from config.yaml (frozen there). Nothing here changes the model settings.
+techniques:
+  A: stratified random 80/20 split of frames (seed changes the split)
+  B: chronological block split inside each recording (deterministic)
+test_fraction: 0.2          # Technique A
+cut_fraction: 0.8           # Technique B: cut at 80% of each recording, moved to the quiet stretch next to a burst
+burst_gap_s: 1.0            # a gap above this between injected frames starts a new burst
+tail_gap_s: 1.0             # sanitisation: frames after the largest gap are removed if the gap exceeds this
+lookup_fallback: Normal     # what the lookup baseline predicts for a signature not seen in training
+deterministic_for_B:        # same split and no randomness: run once and copy the rows to the other seeds
+  - Lookup
+  - LR
+model_names:                # name in config.yaml -> name in the results table template
+  Lookup: Lookup
+  DT: DecisionTree
+  LR: LogisticRegression
+  RF: RandomForest
+template: results/results_table_template.csv

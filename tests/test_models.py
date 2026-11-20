@@ -17,7 +17,7 @@ def test_builders_and_seeds():
     d = build_model("DT", 44, CFG)
     assert isinstance(d, DecisionTreeClassifier) and d.random_state == 44 and d.class_weight == "balanced"
     r = build_model("RF", 45, CFG)
-    assert isinstance(r, RandomForestClassifier) and r.random_state == 45 and r.class_weight == "balanced"
+    assert isinstance(r, RandomForestClassifier) and r.random_state == 45 and r.class_weight == "balanced_subsample"
 
 
 def test_scaler_fitted_on_training_side_only():
